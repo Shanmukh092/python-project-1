@@ -13,7 +13,7 @@ pipeline{
 				git config user.email "shanukh@local"
 				git config user.name "Shanmukh"
 
-				git fetch origin main feature
+				git fetch origin main:refs/remotes/origin/main feature:refs/remotes/origin/feature
 				git checkout -B main origin/main
 
 				git merge origin/feature --no-edit
