@@ -10,9 +10,14 @@ pipeline{
 		stage("merge"){
 			steps{
 				sh '''
+				git config user.email "shanukh@local"
+				git config user.name "Shanmukh"
+
 				git checkout main
 				git pull origin main
-				git merge origin/feature
+
+				git merge origin/feature --no-edit
+
 				git push origin main
 				'''
 			}
