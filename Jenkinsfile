@@ -9,6 +9,7 @@ pipeline{
 		}
 		stage("merge"){
 			steps{
+				withCredentials([usernamePassword(credentialsId: 'github-pat', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')])
 				sh '''
 				git config user.email "shanukh@local"
 				git config user.name "Shanmukh"
