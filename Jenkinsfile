@@ -9,7 +9,14 @@ pipeline{
 		}
 		stage("merge"){
 			steps{
-				withCredentials([usernamePassword(credentialsId: 'github-pat', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_TOKEN')])
+				withCredentials([
+usernamePassword(
+credentialsId: 'github-pat',
+usernameVariable: 'GIT_USER',
+passwordVariable: 'GIT_TOKEN'
+)
+])
+{
 				sh '''
 				git config user.email "shanukh@local"
 				git config user.name "Shanmukh"
@@ -22,6 +29,7 @@ pipeline{
 				git push https://${GIT_USER}:${GIT_TOKEN}@github.com/Shanmukh092/python-project-1.git main
 				'''
 			}
+}
 		}
 	}
 	
